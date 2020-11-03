@@ -1,0 +1,39 @@
+﻿using System;
+
+namespace Employee_Payroll_management
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("welcome to employee payroll");
+            EmployeeRepo repo = new EmployeeRepo();
+
+            //EmployeePayroll employee = new EmployeePayroll();
+            //employee.name = "Dhoni";
+            //employee.startDate = Convert.ToDateTime("2020-10-01");
+            //employee.gender = 'M';
+            //employee.Address = "DELHI";
+            //employee.phoneNumber = "+91 9866528888";
+            // repo.addEmpoyee(employee);
+
+            //EmployeePayroll employee1 = new EmployeePayroll();
+
+            //employee1.name = "Mithali";
+            //employee1.startDate = Convert.ToDateTime("2029-02-01");
+            //employee1.gender = 'F';
+            //employee1.Address = "BANGALORE";
+            //employee1.phoneNumber = "+91 8500500964";
+
+
+            //  repo.addEmpoyee(employee1);
+          //  repo.UpdateEmployeeAddress();
+            repo.GetAllEmployee();
+
+           
+        }
+    }
+}
+
+        
+    

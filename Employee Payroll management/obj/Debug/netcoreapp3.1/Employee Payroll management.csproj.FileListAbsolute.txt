@@ -1,0 +1,20 @@
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\Employee Payroll management.exe
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\Employee Payroll management.deps.json
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\Employee Payroll management.runtimeconfig.json
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\Employee Payroll management.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\Employee Payroll management.dll
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\Employee Payroll management.pdb
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.dll
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.pdb
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.genruntimeconfig.cache
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.csproj.CopyComplete
