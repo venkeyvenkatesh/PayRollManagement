@@ -16,10 +16,10 @@ namespace Employee_Payroll_management
             try
             {
                 List<EmployeePayroll> list = new List<EmployeePayroll>();
-               
+
                 using (connection)
                 {
-                    
+
                     SqlCommand cnd = new SqlCommand(query, connection);
                     connection.Open();
 
@@ -61,7 +61,7 @@ namespace Employee_Payroll_management
             }
         }
 
-        public bool addEmpoyee(EmployeePayroll employee)
+        public Payments addEmployee(EmployeePayroll employee)
         {
             try
             {
@@ -78,17 +78,27 @@ namespace Employee_Payroll_management
                     cnd.Parameters.AddWithValue("@phoneNumber", employee.phoneNumber);
                     connection.Open();
 
-                    var result = cnd.ExecuteNonQuery();
-                    connection.Close();
+                    var result = cnd.ExecuteReader();
+                    Payments payments = new Payments();
+                    if (result.HasRows)
+                    {
+                        if(result.Read())
+                        {
+                           
+                            payments.id = result.GetInt32(0);
+                            payments.basicPay = result.GetDecimal(1);
+                            payments.deductions = result.GetDecimal(2);
+                            payments.taxable_pay = result.GetDecimal(3);
+                            payments.tax = result.GetDecimal(4);
+                            payments.net_pay = result.GetDecimal(5);
 
-                    if (result != 0)
-                    {
-                        return true;
+                        }
                     }
-                    else
-                    {
-                        return false;
-                    }
+                    result.Close();
+                    connection.Close();
+                    return payments;
+
+                  
 
 
                 }
@@ -107,7 +117,7 @@ namespace Employee_Payroll_management
         {
             try
             {
-                
+
                 using (connection)
                 {
                     Payments payments = new Payments();
@@ -115,7 +125,7 @@ namespace Employee_Payroll_management
                     SqlCommand cnd = new SqlCommand(query, connection);
                     connection.Open();
 
-                   
+
                     var result = cnd.ExecuteNonQuery();
                     connection.Close();
 
@@ -143,33 +153,33 @@ namespace Employee_Payroll_management
         }
 
 
-        public decimal UpdateEmployeeSalaryUsingStoredProcedure(string name, double salary)
+        public Payments UpdateEmployeeSalaryUsingStoredProcedure(string name, double salary)
         {
             try
             {
-                decimal sal = 0;
+
 
                 using (connection)
                 {
-
+                    Payments payments = new Payments();
                     SqlCommand cnd = new SqlCommand("sp_UpdateSalary", connection);
                     cnd.CommandType = CommandType.StoredProcedure;
                     cnd.Parameters.AddWithValue("@salary", salary);
                     cnd.Parameters.AddWithValue("@name", name);
 
                     connection.Open();
-                   SqlDataReader dr= cnd.ExecuteReader();
-                   // var result = cnd.ExecuteNonQuery();
-                  
-                   if(dr.HasRows)
+                    SqlDataReader dr = cnd.ExecuteReader();
+
+
+                    if (dr.HasRows)
                     {
-                        while(dr.Read())
+                        while (dr.Read())
                         {
-                            sal= dr.GetDecimal(1);
+                            payments.net_pay = dr.GetDecimal(1);
                         }
                     }
                     connection.Close();
-                    return sal;
+                    return payments;
 
 
                 }
@@ -183,5 +193,99 @@ namespace Employee_Payroll_management
                 connection.Close();
             }
         }
+
+
+        public Dictionary<string, decimal> OperationOnSalaries(string query)
+        {
+            Dictionary<string, decimal> dictionary = new Dictionary<string, decimal>();
+            try
+            {
+                Payments payments = new Payments();
+                using (connection)
+                {
+
+                    SqlCommand cnd = new SqlCommand(query, connection);
+                    connection.Open();
+
+                    SqlDataReader dr = cnd.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            string gender = dr.GetString(0);
+                            decimal value = dr.GetDecimal(1);
+                            dictionary.Add(gender, value);
+                            Console.WriteLine(gender + "  " + value);
+                        }
+                    }
+
+                    connection.Close();
+                    return dictionary;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+        }
+
+
+        public void GetAllSalaries()
+        {
+            try
+            {
+                Payments payments = new Payments();
+                using (connection)
+                {
+                    string query = @"select * from payments";
+                    SqlCommand cnd = new SqlCommand(query, connection);
+                    connection.Open();
+
+                    SqlDataReader dr = cnd.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        Console.WriteLine("Id" + " " + "Basic_pay" + " " + "Deductions" + " " + "Taxable_Pay" + " " + "Tax" + " " + "Net_pay" + "\n");
+                        while (dr.Read())
+                        {
+                            payments.id = dr.GetInt32(0);
+                            payments.basicPay = dr.GetDecimal(1);
+                            payments.deductions = dr.GetDecimal(2);
+                            payments.taxable_pay = dr.GetDecimal(3);
+                            payments.tax = dr.GetDecimal(4);
+                            payments.net_pay = dr.GetDecimal(5);
+
+
+                            Console.WriteLine(payments.id + "  " + payments.basicPay + "  " + payments.deductions + "  " + payments.taxable_pay + " " + payments.tax + "  " + payments.net_pay);
+                            Console.WriteLine("");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No DAta found");
+                    }
+                    dr.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+
     }
 }

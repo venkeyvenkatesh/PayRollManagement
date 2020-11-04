@@ -11,8 +11,8 @@ namespace Employee_Payroll_management
 
             //UC2 get all the employee Details
 
-           // string query = @"select * from Employee_payroll";
-           // repo.GetAllEmployee(query);
+            string query = @"select * from Employee_payroll";
+            repo.GetAllEmployee(query);
 
             //Insert some record into employee table
 
@@ -32,8 +32,20 @@ namespace Employee_Payroll_management
             // repo.UpdateEmployeeSalaryUsingStoredProcedure("venkey", 43540);
 
             //Get the employees who joined after certain date range
-              string query = @"select* from Employee_payroll where start_Date between CAST('2020-01-01' as date) and GETDATE()";
-              repo.GetAllEmployee(query);
+            //string query = @"select* from Employee_payroll where start_Date between CAST('2020-01-01' as date) and GETDATE()";
+            //repo.GetAllEmployee(query);
+
+
+            //  string query = @"select a.gender,sum(b.net_pay)SumOfSalaries from Employee_payroll a inner join payments b on a.id = b.id group by a.gender";
+            //    string query = @"select a.gender,avg(b.net_pay)AvgOfSalaries from Employee_payroll a inner join payments b on a.id=b.id group by a.gender";
+            //string query = @"select a.gender,max(b.net_pay)AvgOfSalaries from Employee_payroll a inner join payments b on a.id = b.id group by a.gender";
+            // string query = @"select a.gender,min(b.net_pay)AvgOfSalaries from Employee_payroll a inner join payments b on a.id = b.id group by a.gender";
+            //repo.OperationOnSalaries(query);
+
+          //  repo.GetAllSalaries();
+
+
+
 
         }
     }

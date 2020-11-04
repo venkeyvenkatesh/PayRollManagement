@@ -9,6 +9,8 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTest1
     {
+
+        //UC3 Update salary based on name
         //  [TestMethod]
         public void UpdateSalaryForAGivenEmployee()
         {
@@ -21,23 +23,24 @@ namespace UnitTestProject1
 
         }
 
-
-       // [TestMethod]
+        //UC4 Update salary using stored procedure
+        //  [TestMethod]
         public void UpdateSalaryUsingStoredProcedure()
         {
 
             EmployeeRepo repo = new EmployeeRepo();
-            decimal actual = repo.UpdateEmployeeSalaryUsingStoredProcedure("venkey", 43540);
+            Payments payments = repo.UpdateEmployeeSalaryUsingStoredProcedure("venkey", 43540);
             decimal expected = 43540;
-
+            decimal actual = payments.net_pay;
             Assert.AreEqual(expected, actual);
         }
 
 
-        [TestMethod]
+        //UC5 Employees joined after certain date
+          [TestMethod]
         public void EmployeesJoinedAfterCertainDate()
         {
-            EmployeeRepo repo= new EmployeeRepo();
+            EmployeeRepo repo = new EmployeeRepo();
             string query = @"select* from Employee_payroll where start_Date between CAST('2020-01-01' as date) and GETDATE()";
             List<EmployeePayroll> list = repo.GetAllEmployee(query);
             string actual1 = list[0].name;
@@ -53,6 +56,8 @@ namespace UnitTestProject1
             Assert.AreEqual(length, actualLength);
 
         }
+
+       
 
 
 

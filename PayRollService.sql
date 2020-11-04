@@ -27,7 +27,7 @@ select gender from Employee_payroll where name='Rajesh';
 
 --UC5.2 Details of employee in a particualr date range
 
-select * from Employee_payroll where start_Date between CAST('2019-01-01' as date) and GETDATE();
+select * from Employee_payroll where start_Date between CAST('2020-01-01' as date) and GETDATE();
 
 
 --UC6.1 Add the gender column to the table 
@@ -154,4 +154,20 @@ select a.gender,max(b.net_pay)MaxOfSalaries from Employee_payroll a inner join p
 select a.gender,min(b.net_pay)MinOfSalaries from Employee_payroll a inner join payments b on a.id=b.id group by a.gender;
 
 
+alter table payments add foreign key(id) References Employee_payroll(id)
+on delete cascade
 
+delete from Employee_payroll where id=6;
+
+select top 1 id from Employee_payroll order by 1 desc;
+
+
+ update payments set payments.net_pay=43500 from payments p 
+  inner join Employee_payroll e on p.id=e.id 
+ where e.name='Dhoni';
+
+ select net_pay from payments p inner join Employee_payroll e on p.id=e.id where e.name='Dhoni';
+
+ select* from Employee_payroll where start_Date between CAST('2020-01-01' as date) and GETDATE()
+
+ delete from Employee_payroll where id=7;
