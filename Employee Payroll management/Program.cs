@@ -11,7 +11,7 @@ namespace Employee_Payroll_management
 
             //UC2 get all the employee Details
 
-            string query = @"select * from Employee_payroll";
+           // string query = @"select * from Employee_payroll";
            // repo.GetAllEmployee(query);
 
             //Insert some record into employee table
@@ -23,14 +23,17 @@ namespace Employee_Payroll_management
             employee.Address = "DELHI";
             employee.phoneNumber = "+91 9866528888";
 
-          //  repo.addEmpoyee(employee);
+            //  repo.addEmpoyee(employee);
 
             //Update Salary of an employee using Sql Query
 
-            repo.UpdateEmployeeSalary();
+            //  repo.UpdateEmployeeSalary();
 
-            repo.UpdateEmployeeSalaryUsingStoredProcedure("venkey", 43540);
+            // repo.UpdateEmployeeSalaryUsingStoredProcedure("venkey", 43540);
 
+            //Get the employees who joined after certain date range
+              string query = @"select* from Employee_payroll where start_Date between CAST('2020-01-01' as date) and GETDATE()";
+              repo.GetAllEmployee(query);
 
         }
     }

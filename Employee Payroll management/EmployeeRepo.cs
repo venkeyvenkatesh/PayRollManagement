@@ -11,11 +11,12 @@ namespace Employee_Payroll_management
     {
         public static string connectionString = "Data Source = (LocalDb)\\VenkeyServer;Initial Catalog = myPayrollDB; Integrated Security = True";
         static SqlConnection connection = new SqlConnection(connectionString);
-        public void GetAllEmployee(string query)
+        public List<EmployeePayroll> GetAllEmployee(string query)
         {
             try
             {
-                EmployeePayroll employeePayroll = new EmployeePayroll();
+                List<EmployeePayroll> list = new List<EmployeePayroll>();
+               
                 using (connection)
                 {
                     
@@ -28,6 +29,7 @@ namespace Employee_Payroll_management
                     {
                         while (dr.Read())
                         {
+                            EmployeePayroll employeePayroll = new EmployeePayroll();
                             employeePayroll.id = dr.GetInt32(0);
                             employeePayroll.name = dr.GetString(1);
                             employeePayroll.startDate = dr.GetDateTime(2);
@@ -37,6 +39,7 @@ namespace Employee_Payroll_management
 
                             Console.WriteLine(employeePayroll.id + "  " + employeePayroll.name + "  " + employeePayroll.startDate + "  " + employeePayroll.gender + "  " + employeePayroll.Address + "  " + employeePayroll.phoneNumber);
                             Console.WriteLine("");
+                            list.Add(employeePayroll);
                         }
                     }
                     else
@@ -45,6 +48,7 @@ namespace Employee_Payroll_management
                     }
                     dr.Close();
                     connection.Close();
+                    return list;
                 }
             }
             catch (Exception e)

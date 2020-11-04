@@ -1,6 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.ComponentModel.Design;
 using Employee_Payroll_management;
+using System.Collections.Generic;
+using System;
+
 namespace UnitTestProject1
 {
     [TestClass]
@@ -13,7 +16,8 @@ namespace UnitTestProject1
 
             Payments payments = repo.UpdateEmployeeSalary();
             decimal expected = 43500;
-            Assert.AreEqual(expected, payments.net_pay);
+            decimal actual = payments.net_pay;
+            Assert.AreEqual(expected, actual);
 
         }
 
@@ -30,7 +34,25 @@ namespace UnitTestProject1
         }
 
 
+        [TestMethod]
+        public void EmployeesJoinedAfterCertainDate()
+        {
+            EmployeeRepo repo= new EmployeeRepo();
+            string query = @"select* from Employee_payroll where start_Date between CAST('2020-01-01' as date) and GETDATE()";
+            List<EmployeePayroll> list = repo.GetAllEmployee(query);
+            string actual1 = list[0].name;
+            string expected1 = "venkey";
+            string actual2 = list[1].name;
+            string expected2 = "Dhoni";
 
+
+            int length = 2;
+            int actualLength = list.Count;
+            Assert.AreEqual(expected1, actual1);
+            Assert.AreEqual(expected2, actual2);
+            Assert.AreEqual(length, actualLength);
+
+        }
 
 
 
