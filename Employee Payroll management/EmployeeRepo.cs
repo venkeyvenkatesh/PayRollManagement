@@ -57,6 +57,127 @@ namespace Employee_Payroll_management
             }
         }
 
-       
+        public bool addEmpoyee(EmployeePayroll employee)
+        {
+            try
+            {
+
+                using (connection)
+                {
+
+                    SqlCommand cnd = new SqlCommand("SpAddEmployeeDetails", connection);
+                    cnd.CommandType = CommandType.StoredProcedure;
+                    cnd.Parameters.AddWithValue("@EmpName", employee.name);
+                    cnd.Parameters.AddWithValue("@StartDate", employee.startDate);
+                    cnd.Parameters.AddWithValue("@Gender", employee.gender);
+                    cnd.Parameters.AddWithValue("@Address", employee.Address);
+                    cnd.Parameters.AddWithValue("@phoneNumber", employee.phoneNumber);
+                    connection.Open();
+
+                    var result = cnd.ExecuteNonQuery();
+                    connection.Close();
+
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public Payments UpdateEmployeeSalary()
+        {
+            try
+            {
+                
+                using (connection)
+                {
+                    Payments payments = new Payments();
+                    string query = @"update payments set payments.net_pay=43500 from payments p inner join Employee_payroll e on p.id=e.id where e.name='Dhoni' ";
+                    SqlCommand cnd = new SqlCommand(query, connection);
+                    connection.Open();
+
+                   
+                    var result = cnd.ExecuteNonQuery();
+                    connection.Close();
+
+                    if (result != 0)
+                    {
+                        payments.net_pay = 43500;
+                        Console.WriteLine("Updated Successfully");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No record found for the given firstName");
+                    }
+                    return payments;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+
+            }
+        }
+
+
+        public decimal UpdateEmployeeSalaryUsingStoredProcedure(string name, double salary)
+        {
+            try
+            {
+                decimal sal = 0;
+
+                using (connection)
+                {
+
+                    SqlCommand cnd = new SqlCommand("sp_UpdateSalary", connection);
+                    cnd.CommandType = CommandType.StoredProcedure;
+                    cnd.Parameters.AddWithValue("@salary", salary);
+                    cnd.Parameters.AddWithValue("@name", name);
+
+                    connection.Open();
+                   SqlDataReader dr= cnd.ExecuteReader();
+                   // var result = cnd.ExecuteNonQuery();
+                  
+                   if(dr.HasRows)
+                    {
+                        while(dr.Read())
+                        {
+                            sal= dr.GetDecimal(1);
+                        }
+                    }
+                    connection.Close();
+                    return sal;
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }
