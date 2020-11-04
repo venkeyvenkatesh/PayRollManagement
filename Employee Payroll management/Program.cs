@@ -29,7 +29,7 @@ namespace Employee_Payroll_management
 
             repo.UpdateEmployeeSalary();
 
-          
+            repo.UpdateEmployeeSalaryUsingStoredProcedure("venkey", 43540);
 
 
         }

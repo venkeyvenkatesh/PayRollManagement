@@ -17,3 +17,4 @@ C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll
 C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.dll
 C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.pdb
 C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.genruntimeconfig.cache
+C:\Users\Administrator\source\repos\Employee Payroll management\Employee Payroll management\obj\Debug\netcoreapp3.1\Employee Payroll management.csprojAssemblyReference.cache

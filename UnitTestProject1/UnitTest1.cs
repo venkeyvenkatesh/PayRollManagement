@@ -6,7 +6,7 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTest1
     {
-          [TestMethod]
+        //  [TestMethod]
         public void UpdateSalaryForAGivenEmployee()
         {
             EmployeeRepo repo = new EmployeeRepo();
@@ -18,10 +18,20 @@ namespace UnitTestProject1
         }
 
 
+       // [TestMethod]
+        public void UpdateSalaryUsingStoredProcedure()
+        {
 
-      
+            EmployeeRepo repo = new EmployeeRepo();
+            decimal actual = repo.UpdateEmployeeSalaryUsingStoredProcedure("venkey", 43540);
+            decimal expected = 43540;
 
-      
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
+
 
 
     }
