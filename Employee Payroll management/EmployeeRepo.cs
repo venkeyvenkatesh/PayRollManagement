@@ -82,9 +82,9 @@ namespace Employee_Payroll_management
                     Payments payments = new Payments();
                     if (result.HasRows)
                     {
-                        if(result.Read())
+                        if (result.Read())
                         {
-                           
+
                             payments.id = result.GetInt32(0);
                             payments.basicPay = result.GetDecimal(1);
                             payments.deductions = result.GetDecimal(2);
@@ -98,7 +98,7 @@ namespace Employee_Payroll_management
                     connection.Close();
                     return payments;
 
-                  
+
 
 
                 }
@@ -285,7 +285,48 @@ namespace Employee_Payroll_management
             }
         }
 
+        public void DeleteAnEmployee()
+        {
+            try
+            {
+
+                using (connection)
+                {
+                    Payments payments = new Payments();
+                    string query = @"delete from Employee_payroll where id=9";
+                    SqlCommand cnd = new SqlCommand(query, connection);
+                    connection.Open();
 
 
+                    var result = cnd.ExecuteNonQuery();
+
+                    connection.Close();
+
+                    if (result != 0)
+                    {
+
+                        Console.WriteLine("Deleted Successfully");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No record found for the given id ");
+                    }
+
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+
+            }
+
+
+        }
     }
 }

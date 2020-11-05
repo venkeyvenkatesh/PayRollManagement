@@ -11,8 +11,8 @@ namespace Employee_Payroll_management
 
             //UC2 get all the employee Details
 
-            string query = @"select * from Employee_payroll";
-            repo.GetAllEmployee(query);
+            //string query = @"select * from Employee_payroll";
+            //repo.GetAllEmployee(query);
 
             //Insert some record into employee table
 
@@ -42,9 +42,9 @@ namespace Employee_Payroll_management
             // string query = @"select a.gender,min(b.net_pay)AvgOfSalaries from Employee_payroll a inner join payments b on a.id = b.id group by a.gender";
             //repo.OperationOnSalaries(query);
 
-          //  repo.GetAllSalaries();
+            //  repo.GetAllSalaries();
 
-
+            repo.DeleteAnEmployee();
 
 
         }

@@ -59,7 +59,7 @@ namespace UnitTestProject1
         //UC6 Operation on Salaries
 
         //Getting gender wise salaries 
-        [TestMethod]
+     //   [TestMethod]
 
         public void GetTheGenderWiseSumOfSalaries()
         {
@@ -101,7 +101,7 @@ namespace UnitTestProject1
 
         //UC7
         //Addding the employee details to payments table when a employee is added to Employee_payroll
-        //     [TestMethod]
+         //   [TestMethod]
 
         public void UpdatePayRollTableWhenAddedDataToEmployeePayRoll()
         {
