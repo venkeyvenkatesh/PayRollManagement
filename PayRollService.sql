@@ -145,7 +145,7 @@ select * from payments;
 
 alter table Employee_payroll drop column basicPay,empAdress,deductions,taxable_pay,tax,net_pay;
 
-select a.gender,sum(b.net_pay)SumOfSalaries from Employee_payroll a inner join payments b on a.id=b.id group by a.gender ;
+select a.gender,sum(b.net_pay)SumOfSalaries from Employee_payroll a inner join payments b on a.id=b.id  group by a.gender  ;
 
 select a.gender,avg(b.net_pay)AvgOfSalaries from Employee_payroll a inner join payments b on a.id=b.id group by a.gender;
 
@@ -171,3 +171,6 @@ select top 1 id from Employee_payroll order by 1 desc;
  select* from Employee_payroll where start_Date between CAST('2020-01-01' as date) and GETDATE()
 
  delete from Employee_payroll where id=7;
+
+ delete from Employee_payroll where id=8;
+

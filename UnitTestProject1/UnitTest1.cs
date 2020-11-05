@@ -37,7 +37,7 @@ namespace UnitTestProject1
 
 
         //UC5 Employees joined after certain date
-          [TestMethod]
+      //   [TestMethod]
         public void EmployeesJoinedAfterCertainDate()
         {
             EmployeeRepo repo = new EmployeeRepo();
@@ -56,8 +56,50 @@ namespace UnitTestProject1
             Assert.AreEqual(length, actualLength);
 
         }
+        //UC6 Operation on Salaries
 
-       
+        //Getting gender wise salaries 
+        [TestMethod]
+
+        public void GetTheGenderWiseSumOfSalaries()
+        {
+            EmployeeRepo repo = new EmployeeRepo();
+            string query = @"select a.gender,sum(b.net_pay)SumOfSalaries from Employee_payroll a inner join payments b on a.id = b.id group by a.gender";
+            Dictionary<string, decimal> dictionary = repo.OperationOnSalaries(query);
+
+            decimal actualSumFemale = dictionary["F"];
+            decimal expectedSumFemale = 65000;
+
+
+            decimal actualSumMale = dictionary["M"];
+            decimal expectedSumMale = 153490;
+
+            Assert.AreEqual(expectedSumFemale, actualSumFemale);
+            Assert.AreEqual(expectedSumMale, actualSumMale);
+        }
+
+        //Getiing gender wise avg of salaries
+       //   [TestMethod]
+        public void GetTheGenderWiseAvgOfSalaries()
+        {
+            EmployeeRepo repo = new EmployeeRepo();
+            string query = @"select a.gender,avg(b.net_pay)SumOfSalaries from Employee_payroll a inner join payments b on a.id = b.id group by a.gender";
+            Dictionary<string, decimal> dictionary = repo.OperationOnSalaries(query);
+
+            decimal actualAvgFemale = dictionary["F"];
+            decimal expectedAvgFemale = 32500;
+
+
+            decimal actualAvgMale = dictionary["M"];
+            decimal expectedAvgMale = 38372.5M;
+
+            Assert.AreEqual(expectedAvgFemale, actualAvgFemale);
+            Assert.AreEqual(expectedAvgMale, actualAvgMale);
+        }
+
+      
+
+
 
 
 
